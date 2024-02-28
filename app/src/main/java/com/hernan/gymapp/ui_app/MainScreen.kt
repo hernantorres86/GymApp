@@ -89,7 +89,7 @@ fun MainToolbar() {
                 stringResource(id = R.string.app_name),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = colorResource(id = R.color.white)
+                color = MaterialTheme.colorScheme.surfaceTint
             )
         },
         colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.scrim)
@@ -105,7 +105,7 @@ fun OptionsApp(backColor: Color, text: String) {
             .padding(vertical = 10.dp, horizontal = 55.dp),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = backColor,
+            containerColor = MaterialTheme.colorScheme.background,
         ), // Cambia a tu color deseado
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp,
@@ -121,7 +121,7 @@ fun OptionsApp(backColor: Color, text: String) {
                 .padding(16.dp),
             verticalArrangement = Arrangement.Center
         ) {
-            Text(text = text, color = MaterialTheme.colorScheme.inversePrimary)
+            Text(text = text, color = MaterialTheme.colorScheme.surfaceTint)
             // Otros elementos de la tarjeta
         }
     }
