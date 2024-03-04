@@ -27,7 +27,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -111,8 +110,8 @@ fun OptionsApp(backColor: Color, text: String) {
             defaultElevation = 10.dp,
         ),
         onClick = {
-
-            goToNextScreen(text)
+            // funcion para pasar a la siguiente pantalla
+            goToUserInfo(text)
         }
     ) {
         Column(
@@ -125,39 +124,14 @@ fun OptionsApp(backColor: Color, text: String) {
             // Otros elementos de la tarjeta
         }
     }
-    /*Card(
-        modifier = Modifier
-            .width(120.dp)
-            .height(150.dp)
-            .padding(vertical = 15.dp, horizontal = 5.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = backColor,
-        ), // Cambia a tu color deseado
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 10.dp,
-        ),
-        onClick = {
-            navControl.navigate(route = Screens.UsersScreen.routes)
-        }
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(stringResource(id = text), color = MaterialTheme.colorScheme.secondary)
-            // Otros elementos de la tarjeta
-        }
-    }*/
+
 }
 
-fun goToNextScreen(text: String) {
+private fun goToUserInfo(text: String) {
     when(text){
         "Turnos" -> navControl.navigate(route = Screens.TurnsScreen.routes + "/Turnos")
         "Miembros del grupo" -> navControl.navigate(route = Screens.UsersScreen.routes + "/Miembros del grupo")
-        "Tipos de clientes" -> navControl.navigate(route = Screens.UsersScreen.routes + "/Tipos de clientes")
+        "Tipos de clientes" -> navControl.navigate(route = Screens.UsersTypeScreen.routes + "/Tipos de clientes")
     }
 
 }
