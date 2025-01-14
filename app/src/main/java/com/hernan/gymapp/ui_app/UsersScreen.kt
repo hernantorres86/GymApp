@@ -52,6 +52,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -196,61 +197,11 @@ fun UserList(drawable: Int, text: Int) {
         }
     }
 }
+
 @Composable
 private fun goToUserInfo(text: String) {
 
-    val bottomSheetHeight = with(LocalDensity.current) { 20.dp.toPx() }
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
-        var bottomSheetVisible by remember { mutableStateOf(true) }
-
-        val targetHeight = if (bottomSheetVisible) bottomSheetHeight else 0f
-        val animatableHeight = remember { androidx.compose.animation.core.Animatable(targetHeight) }
-        LaunchedEffect(bottomSheetVisible) {
-            animatableHeight.animateTo(
-                targetValue = targetHeight,
-                animationSpec = tween(
-                    durationMillis = 300,
-                    easing = LinearOutSlowInEasing
-                )
-            )
-        }
-
-        Column(
-            Modifier
-                .graphicsLayer {
-                    translationY = animatableHeight.value
-                }
-                .fillMaxSize()
-                .padding(16.dp)
-                .background(
-                    color = MaterialTheme.colorScheme.background,
-                    shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-                )
-        ) {
-            Image(
-                painter = painterResource(R.drawable.ab3_stretching),  //R.drawable.ab1_inversions
-                contentDescription = null,
-                contentScale = ContentScale.Crop, // puedo dar 3 estilos de imagen. Fit, FillBounds y Crop
-                modifier = Modifier
-                    .height(250.dp)
-                    .width(250.dp)
-                    .padding(15.dp)
-                    .clip(CircleShape)
-                    .align(Alignment.CenterHorizontally)
-            )
-            Text("Main Content")
-        }
-
-        // Toggle bottom sheet visibility
-        coroutineScoper!!.launch {
-            bottomSheetVisible = !bottomSheetVisible
-        }
-    }
+   PersonDateScreen()
 }
     //navControl.navigate(route = Screens.BottomDialogUserData.routes + "/$text")
 
