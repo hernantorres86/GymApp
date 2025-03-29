@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.hernan.gymapp.ui_app.MainScreen
+import com.hernan.gymapp.main_screen.presentation.ui.MainScreen
 import com.hernan.gymapp.ui_app.SplashScreen
 import com.hernan.gymapp.ui_app.TurnsScreen
 import com.hernan.gymapp.ui_app.UsersScreen

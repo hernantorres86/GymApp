@@ -1,30 +1,27 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
+package com.hernan.gymapp.main_screen
 
-package com.hernan.gymapp
-
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.ColorInt
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.WindowInsetsControllerCompat
+import com.hernan.gymapp.R
 import com.hernan.gymapp.navigation.AppNavigation
 import com.hernan.gymapp.ui.theme.GymAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 
 private var isdarkTheme = true
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
