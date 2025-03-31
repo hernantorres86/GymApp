@@ -2,12 +2,14 @@ package com.hernan.gymapp.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.hernan.gymapp.main_screen.presentation.ui.MainScreen
+import com.hernan.gymapp.main_screen.presentation.viewmodel.StateViewModel
 import com.hernan.gymapp.ui_app.SplashScreen
 import com.hernan.gymapp.ui_app.TurnsScreen
 import com.hernan.gymapp.ui_app.UsersScreen
@@ -28,7 +30,8 @@ fun AppNavigation(){
         }
 
         composable(route = Screens.MainScreen.routes){
-            MainScreen(isdarkTheme, navController)
+            val firstViewModel: StateViewModel = hiltViewModel()
+            MainScreen(isdarkTheme, navController, firstViewModel)
         }
 
         composable(route = Screens.TurnsScreen.routes + "/{text}",

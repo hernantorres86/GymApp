@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.hernan.gymapp.main_screen.presentation.ui
 
 import android.util.Log
@@ -35,36 +33,44 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.hernan.gymapp.R
-import com.hernan.gymapp.main_screen.presentation.state.ResourceFlow
-import com.hernan.gymapp.main_screen.presentation.viewmodel.ClientViewModel
+import com.hernan.gymapp.common.state.ResourceFlow
+import com.hernan.gymapp.main_screen.domain.model.FirstState
+import com.hernan.gymapp.main_screen.presentation.viewmodel.StateViewModel
 import com.hernan.gymapp.navigation.Screens
 
 private lateinit var navControl: NavHostController
 @Composable
-fun MainScreen(isdarkTheme: Boolean,
-               navController: NavHostController,
-               clientViewModel: ClientViewModel = hiltViewModel()) {
+fun MainScreen(
+    isdarkTheme: Boolean,
+    navController: NavHostController,
+    firstViewModel: StateViewModel,
+) {
 
-    val clientState by clientViewModel.clients.collectAsState()
-    when (clientState) {
+    val firstStateViewModel by firstViewModel.firstState.collectAsState()
+    when (firstStateViewModel) {
         is ResourceFlow.Loading -> {
             Log.d("STATE", "CARGANDO")
         }
         is ResourceFlow.Success -> {
-            val data = (clientState as ResourceFlow.Success).data
-            Log.d("STATE", "ESTADO CARGADO")
+            val data = (firstStateViewModel as ResourceFlow.Success).data
+            Log.d("STATE", "ESTADO $data")
+            inflateList(data)
 
         }
         is ResourceFlow.Error -> {
-            val message = (clientState as ResourceFlow.Error).message
+            val message = (firstStateViewModel as ResourceFlow.Error).message
             Log.d("STATE", "ESTADO ERROR $message")
 
         }
     }
     navControl = navController
+
+}
+
+@Composable
+private fun inflateList(data: List<FirstState>) {
     LazyColumn(horizontalAlignment =Alignment.CenterHorizontally
         ,modifier = Modifier
             .fillMaxSize()
@@ -74,9 +80,12 @@ fun MainScreen(isdarkTheme: Boolean,
         item { MainToolbar() }
         //if (isdarkTheme) item {  } else item { BackImage(R.drawable.logo_blanco) }
         item { BackImage(R.drawable.logo_eze_solo_nombre) }
-        item { OptionsApp(MaterialTheme.colorScheme.surfaceTint, stringResource(id = R.string.turns)) }
-        item { OptionsApp(MaterialTheme.colorScheme.surfaceTint, stringResource(id = R.string.members)) }
-        item { OptionsApp(MaterialTheme.colorScheme.surfaceTint, stringResource(id = R.string.client_types) ) }
+        item {
+            data.forEach { label ->
+                OptionsApp(MaterialTheme.colorScheme.surfaceTint, label.name)
+            }
+        }
+
         /*item { Row() {
             OptionsApp(MaterialTheme.colorScheme.onSecondary, R.string.turns)
             OptionsApp(MaterialTheme.colorScheme.onSecondary, R.string.members)
@@ -86,7 +95,6 @@ fun MainScreen(isdarkTheme: Boolean,
 
     }
 }
-
 @Composable
 fun BackImage(image: Int) {
     Image(

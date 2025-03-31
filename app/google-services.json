@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "876785562797",
+    "project_id": "gymapphernan",
+    "storage_bucket": "gymapphernan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876785562797:android:ded6854240083dc9b50224",
+        "android_client_info": {
+          "package_name": "com.hernan.gymapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNJ8EUiP37klffPTgiY_gc9reVvasWVpo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
