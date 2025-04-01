@@ -1,4 +1,4 @@
-package com.hernan.gymapp.ui_app
+package com.hernan.gymapp.user_type.data.data.presentation.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -44,8 +44,8 @@ private lateinit var navControl: NavHostController
 fun UsersTypeScreen(isdarkTheme: Boolean, navController: NavHostController, text: String?) {
 
     Scaffold(
-        topBar = { ToolbarUsersType()},
-        content = { ColumnToListTypes()}
+        topBar = { ToolbarUsersType() },
+        content = { ColumnToListTypes() }
     )
 
     textScreen = text
@@ -81,9 +81,9 @@ fun ColumnToListTypes() {
 
         ) {
 
-        item {UserListTypesUsers(R.drawable.fitness_man_one, "Categoria Light")}
-        item {UserListTypesUsers(R.drawable.fitness_woman_two, "Categoria Force")}
-        item {UserListTypesUsers(R.drawable.fitness_man_two, "Categoria Stronger")}
+        item { UserListTypesUsers(R.drawable.fitness_man_one, "Categoria Light") }
+        item { UserListTypesUsers(R.drawable.fitness_woman_two, "Categoria Force") }
+        item { UserListTypesUsers(R.drawable.fitness_man_two, "Categoria Stronger") }
 
         }
 

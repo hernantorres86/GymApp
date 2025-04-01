@@ -2,7 +2,7 @@ package com.hernan.gymapp.common.state.module
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hernan.gymapp.main_screen.data.repository.FirstStateRepositoryImpl
-import com.hernan.gymapp.main_screen.domain.repository.ClientRepository
+import com.hernan.gymapp.user_type.data.data.domain.repository.ClientRepository
 import com.hernan.gymapp.main_screen.domain.repository.FirstStateRepository
 import com.hernan.gymapp.main_screen.domain.usecase.FirstStateUseCase
 import com.hernan.gymapp.user_type.data.data.domain.usecase.GetClientUsecase

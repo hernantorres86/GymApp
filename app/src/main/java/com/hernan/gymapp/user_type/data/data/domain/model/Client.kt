@@ -1,4 +1,4 @@
-package com.hernan.gymapp.main_screen.domain.model
+package com.hernan.gymapp.user_type.data.data.domain.model
 
 data class Client(
     val id: String,

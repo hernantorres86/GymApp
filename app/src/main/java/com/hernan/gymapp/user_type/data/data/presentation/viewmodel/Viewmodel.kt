@@ -2,7 +2,7 @@ package com.hernan.gymapp.main_screen.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hernan.gymapp.main_screen.domain.model.Client
+import com.hernan.gymapp.user_type.data.data.domain.model.Client
 import com.hernan.gymapp.user_type.data.data.domain.usecase.GetClientUsecase
 import com.hernan.gymapp.common.state.ResourceFlow
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +17,8 @@ class ClientViewModel @Inject constructor(
     private val getClientUsecase: GetClientUsecase
 ) : ViewModel() {
 
-    private val _clientState = MutableStateFlow<ResourceFlow<Client>>(ResourceFlow.Loading)
-    val clientState: StateFlow<ResourceFlow<Client>> = _clientState.asStateFlow()
+    private val _clientState = MutableStateFlow<ResourceFlow<List<Client>>>(ResourceFlow.Loading)
+    val clientState: StateFlow<ResourceFlow<List<Client>>> = _clientState.asStateFlow()
 
     init {
         fetchClient("")

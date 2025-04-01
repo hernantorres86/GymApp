@@ -1,6 +1,6 @@
 package com.hernan.gymapp.user_type.data.data.model
 
-import com.hernan.gymapp.main_screen.domain.model.Client
+import com.hernan.gymapp.user_type.data.data.domain.model.Client
 
 data class ClientDto(
     val id: String = "",
